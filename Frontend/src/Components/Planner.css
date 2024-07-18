@@ -1,0 +1,18 @@
+/* Planner.css */
+.planner-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .planner-container > div {
+    margin: 10px;
+    padding: 20px;
+    background-color: rgb(57, 56, 56); /* Dark grey background */
+    border: 2px solid rgb(255, 111, 0); /* Orange border */
+    border-radius: 8px; /* Rounded corners */
+    color: rgb(255, 111, 0); /* Orange text */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }

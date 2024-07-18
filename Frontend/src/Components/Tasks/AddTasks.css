@@ -1,0 +1,76 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: 'Times New Roman', serif;
+    background-color: #f0f0f0; /* Background color for the entire page */
+    overflow-y: scroll; /* Allow scrolling only for the body */
+  }
+  
+  /* Overlay styles */
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent dark overlay */
+    z-index: 1000; /* Ensure it covers everything except the modal */
+  }
+  
+  /* Modal container styles */
+  .AddTasks {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 90%; /* Limit maximum height of the modal */
+    width: 300px; /* Fixed width of the modal */
+    background-color: rgb(57, 56, 56);
+    border: 5px solid rgb(255, 111, 0); /* Orange border */
+    padding: 20px; /* Padding for content inside the modal */
+    z-index: 1001; /* Ensure it's above the overlay */
+    color: rgb(255, 111, 0);
+    overflow-y: auto; /* Enable vertical scrolling for the modal */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  /* Input styles */
+  .AddTasks .form-control {
+    margin: 1rem 0;
+    background: rgb(57, 56, 56);
+    color: rgb(255, 111, 0);
+    border: 1px solid rgb(255, 111, 0); /* Ensure input border matches modal */
+  }
+  
+  .AddTasks .form-control label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .AddTasks .form-control input,
+  .AddTasks .form-control textarea {
+    width: calc(100% - 2px); /* Adjust width to accommodate border */
+    font: inherit;
+    border: none; /* Remove default border to avoid double borders */
+    padding: 0.15rem 0.25rem;
+    background-color: rgb(57, 56, 56);
+    color: rgb(255, 111, 0);
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+  
+  .AddTasks .form-control input:focus,
+  .AddTasks .form-control textarea:focus {
+    outline: none;
+    background: rgb(57, 56, 56);
+  }
+  
+  .AddTasks .form-control--invalid label,
+  .AddTasks .form-control--invalid p {
+    color: red;
+  }
+  
+  .AddTasks .form-control--invalid input,
+  .AddTasks .form-control--invalid textarea {
+    border-color: red;
+    background: #ffd1d1;
+  }
