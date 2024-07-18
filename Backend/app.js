@@ -49,19 +49,26 @@ app.use("/api/tasks", tasksRoutes);
 app.use("/api/users", usersRoutes);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Frontend/build', 'index.html'));
+  res.sendFile(path.join(__dirname, "..", "Frontend", "build", 'index.html'), err => {
+    if (err) {
+      console.error('Error sending index.html:', err);
+      res.status(500).send('Internal Server Error');
+    }
+  });
 });
 
 
 
-app.use((error, req, res,next) => {
-
-        if(res.headerSent) {
-            return next(error);
-        }
-        res.status(error.code || 500);  
-        res.json( { message: error.message || 'An unknown error occured'  });
-
+app.use((error, req, res, next) => {
+  if (res.headersSent) {
+      return next(error);
+  }
+  // Ensure the status code is valid
+  const statusCode = Number.isInteger(error.code) && error.code >= 100 && error.code <= 599
+      ? error.code
+      : 500;
+  res.status(statusCode);  
+  res.json({ message: error.message || 'An unknown error occurred' });
 });
 
 //STEP 2
@@ -69,7 +76,6 @@ app.use((error, req, res,next) => {
 const url = 'mongodb+srv://crossg57:NovaBlade2001@thecluster.vsedgei.mongodb.net/?retryWrites=true&w=majority&appName=TheCluster';
 const PORT = process.env.PORT || 5000;
 mongoose
-
   .connect(
     url
   )
