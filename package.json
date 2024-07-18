@@ -1,0 +1,10 @@
+{
+    "name": "weekly-planner-app-nasir",
+    "version": "1.0.0",
+    "scripts": {
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm --prefix Frontend install && npm --prefix Frontend run build && npm --prefix Backend install"
+    },
+    "engines": {
+      "node": "20.10.0"  
+    }
+  }
